@@ -1,8 +1,9 @@
-# Plan: prj-6364-task-mugrl94t
+# Plan: task-mugrl94t
 
 **Project:** `sqlite-cli`  
 **Task ID:** `task-mugrl94t`  
 **Repo:** `prj-6364-task-mugrl94t`  
+**Progress:** 1/5 subtasks done
 
 ## Summary
 
@@ -10,50 +11,45 @@
 
 ## Subtasks
 
-### 1. Scaffold проекта и структура репозитория
+### ❌ 1. Scaffold проекта и структура репозитория
 
 - **ID:** `sub-1`
 - **Profile:** `20razrab1`
-- **Tester:** `TBD`
-- **Status:** `pending`
+- **Status:** `failed`
 - **Description:** Создать структуру проекта: package.json/pyproject.toml с зависимостью sqlite3/better-sqlite3, README.md, .gitignore, директории src/ и tests/. Выбрать язык (Node.js или Python), зафиксировать в README. Инициализировать git и сделать первый коммит в main.
 - **Test plan:** Репозиторий клонируется, npm/pip install проходит без ошибок, точка входа (bin/sqlite или sqlite_cli/__main__.py) существует и запускается с --help
 
-### 2. Ядро: модуль работы с SQLite (открытие/закрытие, выполнение SQL)
+### ⬜ 2. Ядро: модуль работы с SQLite (открытие/закрытие, выполнение SQL)
 
 - **ID:** `sub-2`
 - **Profile:** `20razrab1`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Реализовать Database модуль с методами: open(path), close(), execute(sql, params) для запросов, executescript(sql) для многошаговых скриптов, list_tables(), describe_table(name) через PRAGMA table_info. Корректная обработка ошибок sqlite3.Error с понятными сообщениями.
 - **Test plan:** Unit-тесты: создание in-memory БД, создание таблицы, INSERT/SELECT, обработка синтаксической ошибки возвращает ненулевой код/exception
 - **Dependencies:** `sub-1`
 
-### 3. CLI-команды (parser + dispatch)
+### ⬜ 3. CLI-команды (parser + dispatch)
 
 - **ID:** `sub-3`
 - **Profile:** `30razrab2`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Реализовать команды: sqlite <db> exec "<sql>", sqlite <db> tables, sqlite <db> schema [table], sqlite <db> query "<sql> --json", sqlite <db> import <file.sql>, sqlite <db> export <file.sql|.csv|.json>. Использовать argparse/commander/click. Вывод в stdout, ошибки/диагностика в stderr, exit-коды 0/1/2 по типу.
 - **Test plan:** Каждая команда запускается из shell и возвращает ожидаемый exit-code; --help выводит список всех команд; query с SELECT возвращает таблицу/JSON
 - **Dependencies:** `sub-2`
 
-### 4. Интеграционные тесты на реальных сценариях
+### ⬜ 4. Интеграционные тесты на реальных сценариях
 
 - **ID:** `sub-4`
 - **Profile:** `30razrab2`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Написать pytest/jest тесты на end-to-end сценарии: создание БД, загрузка SQL-дампом, выполнение запроса, экспорт в CSV/JSON, обработка несуществующего файла. Покрытие >=70% ядра. Тесты запускаются через CI-скрипт или явную команду.
 - **Test plan:** pytest/jest возвращает 0, coverage >=70%, все тесты зелёные; добавлен тест негативного сценария (битый SQL файл)
 - **Dependencies:** `sub-3`
 
-### 5. Документация README + примеры использования
+### ⬜ 5. Документация README + примеры использования
 
 - **ID:** `sub-5`
 - **Profile:** `20razrab1`
-- **Tester:** `TBD`
 - **Status:** `pending`
 - **Description:** Заполнить README: описание, установка (pip install / npm install -g), список команд с примерами, формат вывода, exit-коды. Добавить секцию 'Quickstart' с 3-5 командами от установки до первого SELECT. Указать минимальную версию языка и зависимости.
 - **Test plan:** README содержит badge статуса, блок кода из Quickstart копипастится и работает как в документации; команды из примеров запускаются пользователем
